@@ -3,7 +3,7 @@ const cors = require('cors');
 const client = require('./db');  // Import the database connection
 
 const app = express();
-const PORT = 5000;
+const PORT = 5001;
 
 // Middleware to parse JSON bodies
 app.use(cors());
