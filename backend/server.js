@@ -11,21 +11,21 @@ app.use(express.json());
 
 // Route to post a new message
 app.post('/messages', async (req, res) => {
-  const { sender_name, message } = req.body;
-  const timestamp = new Date().toISOString();
-
-  try {
-    // Insert message into the database
-    await client.query(
-      'INSERT INTO messages (sender_name, message, timestamp) VALUES ($1, $2, $3)',
-      [sender_name, message, timestamp]
-    );
-    res.status(201).send('Message sent');
-  } catch (err) {
-    console.error('Error inserting message:', err.stack);
-    res.status(500).send('Error sending message');
-  }
-});
+    const { sender_name, message } = req.body;
+    const timestamp = new Date().toISOString();
+  
+    try {
+      await client.query(
+        'INSERT INTO messages (sender_name, message, timestamp) VALUES ($1, $2, $3)',
+        [sender_name, message, timestamp]
+      );
+      res.status(201).send('Message sent');
+    } catch (err) {
+      console.error('Error inserting message:', err.stack); // Log the error
+      res.status(500).send('Error sending message');
+    }
+  });
+  
 
 // Route to get all messages
 app.get('/messages', async (req, res) => {
