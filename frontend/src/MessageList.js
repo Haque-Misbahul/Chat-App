@@ -1,61 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const MessageList = () => {
-  const [messages, setMessages] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [page, setPage] = useState(1);  // Track the current page
-  const [totalPages, setTotalPages] = useState(1);  // Track total number of pages
+const MessageList = ({ messages, setMessages }) => {
+    const [searchQuery, setSearchQuery] = useState('');
 
-  const messagesPerPage = 10;
-
+  // Fetch messages from the backend API
   useEffect(() => {
-    // Fetch messages for the current page and search query
-    const fetchMessages = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5001/messages`, {
-          params: {
-            page: page,
-            limit: messagesPerPage,
-          },
+    if (searchQuery) {
+      console.log('Fetching search results for:', searchQuery); // Debugging log
+      axios.get(`http://localhost:5001/search?query=${searchQuery}`)
+        .then(response => {
+          console.log('Search response:', response.data); // Check what response we are getting
+          setMessages(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching search results:', error);
         });
-        setMessages(response.data);
-      } catch (error) {
-        console.error('Error fetching messages:', error);
-      }
-    };
-
-    fetchMessages();
-  }, [page]);  // Fetch messages whenever page changes
-
-  // Handle search query change
-  const handleSearch = async (e) => {
-    setSearchQuery(e.target.value);
-    setPage(1);  // Reset to page 1 when the search query changes
-    // You may need to modify the search API call to handle search along with pagination
-  };
-
-  // Render page buttons
-  const renderPagination = () => {
-    const pageNumbers = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pageNumbers.push(
-        <button
-          key={i}
-          onClick={() => setPage(i)}
-          disabled={i === page}  // Disable the current page button
-          className={`page-btn ${i === page ? 'active' : ''}`}
-        >
-          {i}
-        </button>
-      );
+    } else {
+      console.log('Fetching all messages');
+      axios.get('http://localhost:5001/messages')
+        .then(response => {
+          setMessages(response.data); // Store all messages
+        })
+        .catch(error => {
+          console.error('Error fetching messages:', error);
+        });
     }
-    return pageNumbers;
+  }, [searchQuery]);  // Run whenever searchQuery changes
+
+  // Handle search input
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    console.log("Search query:", query);  // Log the search query to make sure it's being captured correctly
+    setSearchQuery(query); // Update the search query state
   };
+
+  // Function to format the timestamp
+  const formatTimestamp = (timestamp) => {
+    const date = new Date(timestamp);
+    return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
+  };
+
+  // Filter messages based on the search query
+  const filteredMessages = messages.filter(message =>
+    message.message.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="message-container">
       <h2>Messages</h2>
+
+      {/* Search Input */}
       <input
         type="text"
         placeholder="Search messages..."
@@ -63,20 +58,19 @@ const MessageList = () => {
         onChange={handleSearch}
         className="search-input"
       />
+
+      {/* Message List */}
       <ul className="message-list">
-        {messages.map((message) => (
-          <li key={message._id || message.id} className="message-item">
+        {filteredMessages.map((message, index) => (
+          <li key={message._id || index} className="message-item">
             <div className="message-header">
               <strong>{message.sender_name}</strong>
-              <span className="timestamp">{message.timestamp}</span>
+              <span className="timestamp">{formatTimestamp(message.timestamp)}</span>
             </div>
             <p className="message-content">{message.message}</p>
           </li>
         ))}
       </ul>
-      <div className="pagination">
-        {renderPagination()}
-      </div>
     </div>
   );
 };

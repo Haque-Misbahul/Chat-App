@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <h1>Chat App</h1>
       <MessageForm setMessages={setMessages} />  {/* Pass setMessages function */}
-      <MessageList messages={messages} />       {/* Pass messages to MessageList */}
+      <MessageList messages={messages} setMessages={setMessages} />      {/* Pass messages to MessageList */}
     </div>
   );
 }

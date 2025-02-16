@@ -40,7 +40,7 @@
 .message-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;  /* Adds spacing between form elements */
+  gap: 10px;  /* Adds spacing between form elements */
   width: 100%;
   max-width: 400px;  /* Limiting the form width */
   margin: 0 auto;
@@ -48,7 +48,7 @@
 
 .input-field, .textarea-field {
   padding: 12px;
-  font-size: 18px;
+  font-size: 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
   width: 100%;
@@ -56,7 +56,7 @@
 }
 
 .textarea-field {
-  height: 120px;  /* Make the message field bigger */
+  height: 100px;  /* Make the message field bigger */
   resize: vertical;  /* Allow vertical resizing */
 }
 
@@ -140,35 +140,3 @@ h2 {
   color: #333;
 }
 
-/*////Pagination////*/
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.page-btn {
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  padding: 8px 16px;
-  margin: 0 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.page-btn:hover {
-  background-color: #ddd;
-}
-
-.page-btn.active {
-  background-color: #007bff;
-  color: white;
-  cursor: not-allowed;
-}
-
-.page-btn:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}

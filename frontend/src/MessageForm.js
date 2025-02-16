@@ -1,4 +1,3 @@
-// src/MessageForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -28,32 +27,33 @@ const MessageForm = ({ setMessages }) => {
         console.error('Error sending message:', error);
       });
 
+    // Clear input fields after message is sent
     setSenderName('');
     setMessage('');
   };
 
   return (
     <div>
-  <h2>Send a New Message</h2>
-  <form onSubmit={handleSubmit} className="message-form">
-    <input
-      type="text"
-      placeholder="Your name"
-      value={senderName}
-      onChange={(e) => setSenderName(e.target.value)}
-      required
-      className="input-field"
-    />
-    <textarea
-      placeholder="Your message"
-      value={message}
-      onChange={(e) => setMessage(e.target.value)}
-      required
-      className="textarea-field"
-    />
-    <button type="submit" className="submit-btn">Send</button>
-  </form>
-</div>
+      <h2>Send a New Message</h2>
+      <form onSubmit={handleSubmit} className="message-form">
+        <input
+          type="text"
+          placeholder="Your name"
+          value={senderName}
+          onChange={(e) => setSenderName(e.target.value)}
+          required
+          className="input-field"
+        />
+        <textarea
+          placeholder="Your message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          required
+          className="textarea-field"
+        />
+        <button type="submit" className="submit-btn">Send</button>
+      </form>
+    </div>
   );
 };
 

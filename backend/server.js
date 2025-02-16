@@ -47,23 +47,15 @@ app.post('/messages', async (req, res) => {
 });
 
 // Route to get all messages (for testing)
-// Route to get messages with pagination
 app.get('/messages', async (req, res) => {
-  const { page = 1, limit = 10 } = req.query;  // Default to page 1 and 10 messages per page
-  const offset = (page - 1) * limit;  // Calculate the offset based on page and limit
-
   try {
-    const result = await dbClient.query(
-      'SELECT * FROM messages ORDER BY timestamp DESC LIMIT $1 OFFSET $2',
-      [limit, offset]
-    );
+    const result = await dbClient.query('SELECT * FROM messages');
     res.status(200).json(result.rows);
   } catch (err) {
     console.error('Error fetching messages:', err.stack);
     res.status(500).send('Error fetching messages');
   }
 });
-
 
 // Route to search messages
 app.get('/search', async (req, res) => {
