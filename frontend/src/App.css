@@ -36,3 +36,139 @@
     transform: rotate(360deg);
   }
 }
+/* //////Message Form///////*/
+.message-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;  /* Adds spacing between form elements */
+  width: 100%;
+  max-width: 400px;  /* Limiting the form width */
+  margin: 0 auto;
+}
+
+.input-field, .textarea-field {
+  padding: 12px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.textarea-field {
+  height: 120px;  /* Make the message field bigger */
+  resize: vertical;  /* Allow vertical resizing */
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+/*////Message List/////*/
+
+.message-container {
+  width: 100%;
+  max-width: 600px;  /* Limit the width of the message list */
+  margin: 20px auto;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.message-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.message-item {
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.message-item:hover {
+  transform: translateY(-5px);  /* Slight lift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);  /* More pronounced shadow on hover */
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #888;
+}
+
+.message-content {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+/*////Pagination////*/
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.page-btn:hover {
+  background-color: #ddd;
+}
+
+.page-btn.active {
+  background-color: #007bff;
+  color: white;
+  cursor: not-allowed;
+}
+
+.page-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
