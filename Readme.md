@@ -26,22 +26,22 @@ Clone the Repository
 
 **Clone the repository to your local machine:**
 
-bash
+###bash
 git clone https://github.com/your-repo/chat-app.git
 cd chat-app
 
 
-**Backend Setup**
+## **Backend Setup**
 Install Backend Dependencies:
 
 Navigate to the backend folder and install the required dependencies:
 
-**bash**
+### **bash**
 cd backend
 npm install
 
 
-**Create a database in PostgreSQL named chat_app:**
+## **Create a database in PostgreSQL named chat_app:**
 CREATE DATABASE chat_app;
 
 **Create the messages table:**
@@ -52,7 +52,7 @@ CREATE TABLE messages (
   timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-**Configure Database Connection:**
+### **Configure Database Connection:**
 Open backend/db.js and ensure your database connection details are correct:
 
 const { Client } = require('pg');
@@ -68,56 +68,56 @@ const dbClient = new Client({
 dbClient.connect();
 module.exports = dbClient;
 
-**Start Elasticsearch:**
+### **Start Elasticsearch:**
 Ensure Elasticsearch is up and running by executing the following:
 
-bash
+### bash
 elasticsearch
 
 You can check if Elasticsearch is running correctly by visiting http://localhost:9200 in your browser.
 
-**Start the Backend Server:**
+## **Start the Backend Server:**
 
 In the backend directory, start the Express server:
 
-bash
+### bash
 node server.js
 
 The backend should now be running at http://localhost:5001.
 
-**Frontend Setup**
+## **Frontend Setup**
 Install Frontend Dependencies:
 
 Navigate to the frontend folder and install the required dependencies:
 
-bash
+### bash
 cd frontend
 npm install
 
-**Start the Frontend React Application:**
+## **Start the Frontend React Application:**
 
 In the frontend directory, start the React development server:
 
-bash
+### bash
 npm start
 
 The frontend should now be running at http://localhost:3000.
 
 ## **Testing the Application**
 
-**Test Message Sending:**
+### **Test Message Sending:**
 
 Open the app in your browser at http://localhost:3000.
 Enter your name and a message in the input fields and click the Send button.
 The message should be sent to the backend, stored in PostgreSQL, and indexed in Elasticsearch.
 The message should immediately appear in the message list.
 
-**Test Message Search:**
+### **Test Message Search:**
 
 Use the search bar at the top of the message list to search for a specific message.
 The search query will be sent to Elasticsearch, and matching messages will be displayed.
 
-**Test Message List:**
+### **Test Message List:**
 
 The message list should display all messages in the database.
 Each message will show the sender's name, message content, and timestamp.
