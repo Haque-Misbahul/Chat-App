@@ -6,12 +6,12 @@ const esClient = new Client({
   node: 'http://localhost:9200',
 });
 
-// Function to search messages in Elasticsearch
+// Function for search messages in Elasticsearch
 async function searchMessages(query) {
   try {
     // Perform search with fuzziness
     const { body } = await esClient.search({
-      index: 'messages_v2',  // The index where your messages are stored
+      index: 'messages_v2',  // The index where messages are stored
       body: {
         query: {
           match: {

@@ -1,10 +1,10 @@
 const { Client } = require('pg');
 
 const client = new Client({
-  user: 'misbahulhaque',
+  user: 'misbahulhaque',//change username
   host: 'localhost',
   database: 'chat_app',
-  password: 'password',
+  password: 'password',//change password
   port: 5432,
 });
 

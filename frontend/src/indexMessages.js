@@ -4,10 +4,10 @@ const { Client: EsClient } = require('@elastic/elasticsearch');
 
 // Create PostgreSQL client
 const pgClient = new PgClient({
-    user: 'misbahulhaque',
+    user: 'misbahulhaque',//Change username 
     host: 'localhost',
     database: 'chat_app',
-    password: 'password',
+    password: 'password',//change password
     port: 5432,
 });
 

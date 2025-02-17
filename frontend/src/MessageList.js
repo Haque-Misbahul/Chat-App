@@ -31,7 +31,7 @@ const MessageList = ({ messages, setMessages }) => {
   // Handle search input
   const handleSearch = (e) => {
     const query = e.target.value;
-    console.log("Search query:", query);  // Log the search query to make sure it's being captured correctly
+    console.log("Search query:", query);  // check that it's being captured correctly
     setSearchQuery(query); // Update the search query state
   };
 

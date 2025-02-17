@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const dbClient = require('./db');  // Import the PostgreSQL client from './db'
-const searchMessages = require('./searchMessages'); // Import the searchMessages function
+const dbClient = require('./db');  // PostgreSQL client from './db'
+const searchMessages = require('./searchMessages'); // Import  searchMessages function
 
-// Create Elasticsearch client
+// Elasticsearch client
 const { Client } = require('@elastic/elasticsearch');
 const esClient = new Client({ node: 'http://localhost:9200' });
 
@@ -12,7 +12,7 @@ const PORT = 5001;
 
 // Middleware to parse JSON bodies
 app.use(cors({
-  origin: '*', // Allow all origins in development
+  origin: '*', 
 }));
 
 app.use(express.json());
@@ -38,7 +38,6 @@ app.post('/messages', async (req, res) => {
         timestamp
       }
     });
-
     res.status(201).send('Message sent');
   } catch (err) {
     console.error('Error inserting message:', err.stack);
