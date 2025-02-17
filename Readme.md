@@ -28,8 +28,8 @@ Before setting up this project, ensure you have the following installed:
 Clone the repository to your local machine:  
 
 ```bash
-git clone https://github.com/your-repo/chat-app.git
-cd chat-app
+git clone https://github.com/Haque-Misbahul/Chat-App.git
+cd Chat-App
 ```
 
 ---
