@@ -26,9 +26,9 @@ Clone the Repository
 
 **Clone the repository to your local machine:**
 
-###bash
+```bash
 git clone https://github.com/your-repo/chat-app.git
-cd chat-app
+cd chat-app 
 
 
 ## **Backend Setup**
