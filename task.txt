@@ -1,1 +1,64 @@
 
+# Chat Message System - One Day Task
+
+## Stack
+- PostgreSQL
+- Express + Node.js
+- React
+- Elasticsearch
+
+## Task Overview
+Build a simple chat message system where users can:
+- Write messages
+- See all messages
+- Search through messages
+
+## Division of Work
+
+### Backend
+1. Set up PostgreSQL database
+   - One table for messages (id, sender name, message, timestamp)
+   - Basic queries
+
+2. Create Express API
+   - Endpoint to post new message
+   - Endpoint to get all messages
+   - Connect to database
+
+### Frontend & Search
+1. Create React app with:
+   - Form to submit messages
+   - Display area for messages
+   - Search box
+
+2. Add Elasticsearch
+   - Basic full-text search
+   - Display search results
+
+## Required Features
+- Send message with name
+- View all messages with timestamps
+- Search through message content
+
+## Bonus Points
+Convert the entire project to TypeScript:
+- Backend: TypeScript with Express
+- Frontend: TypeScript with React
+- Add proper interfaces for all data
+- Type-safe API calls
+- Error handling types
+- Typed components and hooks
+
+Keep it simple. Focus on getting the basic features working first before attempting TypeScript conversion.
+Provide a Guide to setup and test.
+
+
+
+CHAT-APP/
+├── backend/
+│   ├── server.js
+│   └── db.js
+├── frontend/
+│   └── (React app will go here)
+├── package.json
+└── README.md
